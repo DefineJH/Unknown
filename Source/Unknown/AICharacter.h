@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "AICharacter.generated.h"
 
+class APatrolPath;
+
 UCLASS()
 class UNKNOWN_API AAICharacter : public ACharacter
 {
@@ -22,7 +24,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	//APatrolPath* getPatrolPath();
+	APatrolPath* getPatrolPath();
 
 
 	virtual void BeginAttack();
@@ -32,7 +34,6 @@ public:
 
 	virtual void StartDieAnimation();
 
-	virtual bool ExamWeakPoint(const FName& spotName) const;
 
 	virtual void Enable();
 	virtual void Disable();
@@ -44,12 +45,9 @@ protected:
 
 	//virtual void SetupBoxColliders();
 protected:
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI", meta = (AllowProtectedAccess = "true"))
-	//	APatrolPath* patrolPath;
-	//UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Health", meta = (AllowProtectedAccess = "true"))
-	//	UHealthComponent* HealthComp;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI", meta = (AllowProtectedAccess = "true"))
+		APatrolPath* patrolPath;
 
-	//TArray<FName> WeakSpot;
 
 	float AttackMeleeDamage = 1.5f;
 	float MaxHealth = 100.0f;

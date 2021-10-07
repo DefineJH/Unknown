@@ -2,6 +2,7 @@
 
 
 #include "AICharacter.h"
+#include "PatrolPath.h"
 #include "AI_AnimInstance.h"
 #include "Controller_AI.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -29,16 +30,16 @@ void AAICharacter::BeginPlay()
 	Super::BeginPlay();
 	//개선필요
 	TArray<AActor*> paths;
-	//UGameplayStatics::GetAllActorsWithTag(GetWorld(), L"PatrolPath", paths);
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(), L"PatrolPath", paths);
 	SpawnDefaultController();
-	/*for (auto obj : paths)
+	for (auto obj : paths)
 	{
 		APatrolPath* path = Cast<APatrolPath>(obj);
 		if (path)
 		{
 			patrolPath = path;
 		}
-	}*/
+	}
 
 }
 
@@ -58,10 +59,10 @@ void AAICharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 }
 
-//APatrolPath* AAICharacter::getPatrolPath()
-//{
-//	return patrolPath;
-//}
+APatrolPath* AAICharacter::getPatrolPath()
+{
+	return patrolPath;
+}
 
 
 void AAICharacter::BeginAttack()
