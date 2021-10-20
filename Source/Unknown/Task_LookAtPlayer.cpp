@@ -20,7 +20,7 @@ EBTNodeResult::Type UTask_LookAtPlayer::ExecuteTask(UBehaviorTreeComponent& Owne
 	FVector playerLoc = cont->get_blackboard()->GetValueAsVector(bb_keys::TargetLocation);
 	FRotator Rotator = UKismetMathLibrary::FindLookAtRotation(cont->GetPawn()->GetActorLocation(), playerLoc);
 	Rotator.Pitch = 0.0f;
-	npc->SetActorRotation(Rotator, ETeleportType::ResetPhysics);
+	npc->SetActorRotation(Rotator);
 
 	FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 	return EBTNodeResult::Succeeded;

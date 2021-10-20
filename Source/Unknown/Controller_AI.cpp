@@ -12,25 +12,28 @@
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Runtime/Engine/Classes/Engine/World.h"
 #include "GameFramework/Character.h"
+#include "Kismet/KismetMathLibrary.h"
 
 AController_AI::AController_AI(const FObjectInitializer& obj_initalizer /*= FObjectInitializer::Get()*/)
 {
-	static ConstructorHelpers::FObjectFinder<UBehaviorTree> obj(TEXT("BehaviorTree'/Game/AI/BB/FPS_BT.FPS_BT'"));
-	if (obj.Succeeded())
-	{
-		bTree = obj.Object;
-	}
-	behaviorTreeComp = obj_initalizer.CreateDefaultSubobject<UBehaviorTreeComponent>(this, TEXT("BehaviorComp"));
 	bBoard = obj_initalizer.CreateDefaultSubobject<UBlackboardComponent>(this, TEXT("BlackBoardComp"));
-	setup_perception_system();
+	behaviorTreeComp = obj_initalizer.CreateDefaultSubobject<UBehaviorTreeComponent>(this, TEXT("BehaviorComp"));
 
+	setup_perception_system();
 }
 
 void AController_AI::BeginPlay()
 {
 	Super::BeginPlay();
-	RunBehaviorTree(bTree);
-	behaviorTreeComp->StartTree(*bTree);
+	if (bTree)
+	{
+		UE_LOG(LogTemp, Warning, L"BTree created");
+		RunBehaviorTree(bTree);
+		behaviorTreeComp->StartTree(*bTree);
+	}
+	else
+		UE_LOG(LogTemp, Warning, L"BTree not created");
+
 }
 
 void AController_AI::OnPossess(APawn* const InPawn)
@@ -55,6 +58,14 @@ void AController_AI::Tick(float DeltaSeconds)
 	{
 		StopMovement();
 	}
+	/*if (bBoard->GetValueAsBool(bb_keys::CanSeePlayer))
+	{
+		UE_LOG(LogTemp, Warning, L"AOPSOSOS");
+		FVector TargetLoc = bBoard->GetValueAsVector(bb_keys::TargetLocation);
+		FVector CurLoc = GetPawn()->GetActorLocation();
+		FRotator TargetRot = UKismetMathLibrary::FindLookAtRotation(CurLoc, TargetLoc);
+		GetPawn()->SetActorRotation(UKismetMathLibrary::RInterpTo(GetPawn()->GetActorRotation(), TargetRot, DeltaSeconds, 10.f));
+	}*/
 
 }
 
@@ -67,6 +78,7 @@ void AController_AI::SetCanMove(bool CanMove)
 {
 	bCanMove = CanMove;
 }
+
 
 void AController_AI::Disable()
 {
