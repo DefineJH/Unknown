@@ -41,7 +41,6 @@ void UAnimNotifyState_Attack::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimS
 		if (cont)
 		{
 			cont->SetCanMove(true);
-
 		}
 	}
 }

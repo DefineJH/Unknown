@@ -22,9 +22,12 @@ public:
 	virtual void NativeBeginPlay() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
+	UFUNCTION(BlueprintNativeEvent)
 	void Play_Attack_Anim();
+	UFUNCTION()
 	void Play_Dead_Anim();
-	UPROPERTY(EditDefaultsOnly)
+public:
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite)
 		UAnimMontage* AttackMontage;
 	UPROPERTY(EditDefaultsOnly)
 		UAnimMontage* DieMontage;

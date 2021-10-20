@@ -7,7 +7,6 @@
 #include "AICharacter.generated.h"
 
 class APatrolPath;
-
 UCLASS()
 class UNKNOWN_API AAICharacter : public ACharacter
 {
