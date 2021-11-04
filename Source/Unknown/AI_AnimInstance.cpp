@@ -7,7 +7,7 @@
 UAI_AnimInstance::UAI_AnimInstance()
 {
 	bIsAttack = false;
-	ConstructorHelpers::FObjectFinder<UAnimMontage> montage(TEXT("AnimMontage'/Game/AI/AI/Dinosaur/AttackMontage.AttackMontage'"));
+	ConstructorHelpers::FObjectFinder<UAnimMontage> montage(TEXT("AnimMontage'/Game/AI/Bear/AttackMontage.AttackMontage'"));
 	if (montage.Succeeded())
 	{
 		AttackMontage = montage.Object;
@@ -24,11 +24,14 @@ void UAI_AnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	Super::NativeUpdateAnimation(DeltaSeconds);
 }
 
-void UAI_AnimInstance::Play_Attack_Anim()
+void UAI_AnimInstance::Play_Attack_Anim_Implementation()
 {
 	if (AttackMontage)
 	{
-		Montage_Play(AttackMontage);
+		if (!Montage_IsPlaying(AttackMontage))
+		{
+			Montage_Play(AttackMontage);
+		}
 	}
 }
 
@@ -36,7 +39,10 @@ void UAI_AnimInstance::Play_Dead_Anim()
 {
 	if (DieMontage)
 	{
-		Montage_Play(DieMontage);
+		if (!Montage_IsPlaying(DieMontage))
+		{
+			Montage_Play(DieMontage);
+		}
 	}
 }
 
