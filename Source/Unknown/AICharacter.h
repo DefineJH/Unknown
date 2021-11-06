@@ -26,8 +26,7 @@ public:
 	APatrolPath* getPatrolPath();
 
 
-	virtual void BeginAttack();
-	virtual void EndAttack();
+
 
 	virtual void StartAttackAnimation();
 
