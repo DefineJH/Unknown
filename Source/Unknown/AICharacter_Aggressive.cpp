@@ -8,3 +8,5 @@ AAICharacter_Aggressive::AAICharacter_Aggressive() : AAICharacter()
 {
 	AIControllerClass = AController_AI_Aggressive::StaticClass();
 }
+
+

@@ -2,7 +2,7 @@
 
 
 #include "AnimNotifyState_Attack.h"
-#include "AICharacter.h"
+#include "AICharacter_Aggressive.h"
 #include "Controller_AI.h"
 
 FString UAnimNotifyState_Attack::GetNotifyName_Implementation() const
@@ -18,7 +18,7 @@ void UAnimNotifyState_Attack::NotifyTick(USkeletalMeshComponent* MeshComp, UAnim
 void UAnimNotifyState_Attack::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration)
 {
 	Super::NotifyBegin(MeshComp, Animation, TotalDuration);
-	AAICharacter* npc = Cast<AAICharacter>(MeshComp->GetOwner());
+	AAICharacter_Aggressive* npc = Cast<AAICharacter_Aggressive>(MeshComp->GetOwner());
 	if (npc)
 	{
 		AController_AI* cont = Cast<AController_AI>(npc->GetController());
@@ -33,7 +33,7 @@ void UAnimNotifyState_Attack::NotifyBegin(USkeletalMeshComponent* MeshComp, UAni
 void UAnimNotifyState_Attack::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation)
 {
 	Super::NotifyEnd(MeshComp, Animation);
-	AAICharacter* npc = Cast<AAICharacter>(MeshComp->GetOwner());
+	AAICharacter_Aggressive* npc = Cast<AAICharacter_Aggressive>(MeshComp->GetOwner());
 	if (npc)
 	{
 		AController_AI* cont = Cast<AController_AI>(npc->GetController());

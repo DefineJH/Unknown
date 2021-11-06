@@ -64,14 +64,6 @@ APatrolPath* AAICharacter::getPatrolPath()
 }
 
 
-void AAICharacter::BeginAttack()
-{
-}
-
-void AAICharacter::EndAttack()
-{
-}
-
 void AAICharacter::StartAttackAnimation()
 {
 	auto* const animInst = Cast<UAI_AnimInstance>(GetMesh()->GetAnimInstance());
