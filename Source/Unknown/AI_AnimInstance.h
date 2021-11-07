@@ -23,8 +23,8 @@ public:
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
 	UFUNCTION(BlueprintNativeEvent)
-	void Play_Attack_Anim();
-	UFUNCTION()
+		void Play_Attack_Anim();
+	UFUNCTION(BlueprintNativeEvent)
 	void Play_Dead_Anim();
 public:
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite)
