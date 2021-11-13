@@ -14,6 +14,8 @@ void AController_AI_Aggressive::Tick(float DeltaTime)
 		FVector TargetLoc = bBoard->GetValueAsVector(bb_keys::TargetLocation);
 		FVector CurLoc = GetPawn()->GetActorLocation();
 		FRotator TargetRot = UKismetMathLibrary::FindLookAtRotation(CurLoc, TargetLoc);
-		GetPawn()->SetActorRotation(UKismetMathLibrary::RInterpTo(GetPawn()->GetActorRotation(), TargetRot, DeltaTime, 10.f));
+		FRotator rot = UKismetMathLibrary::RInterpTo(GetPawn()->GetActorRotation(), TargetRot, DeltaTime, 10.f);
+		rot.Pitch = 0.f;
+		GetPawn()->SetActorRotation(rot);
 	}
 }

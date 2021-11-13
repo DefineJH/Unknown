@@ -35,7 +35,7 @@ void UAI_AnimInstance::Play_Attack_Anim_Implementation()
 	}
 }
 
-void UAI_AnimInstance::Play_Dead_Anim()
+void UAI_AnimInstance::Play_Dead_Anim_Implementation()
 {
 	if (DieMontage)
 	{

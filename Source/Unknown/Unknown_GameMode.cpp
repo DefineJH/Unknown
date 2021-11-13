@@ -12,7 +12,6 @@ AUnknown_GameMode::AUnknown_GameMode()
 	MonsterPool = CreateDefaultSubobject<UObjectPool>(L"MonsterPool");
 	MonsterPool->CreatePool(AAICharacter::StaticClass());
 
-	DinosaurBPClass = ConstructorHelpers::FClassFinder<ACharacter>(TEXT("/Game/AI/Dinosaur/MyFPS_AICharacter_Dinosaura")).Class;
 }
 
 
@@ -39,7 +38,7 @@ void AUnknown_GameMode::DeleteNPCFromScene(AAICharacter* Npc)
 
 void AUnknown_GameMode::SpawnMonster(FVector worldLocation)
 {
-	AAICharacter* npc = Cast<AAICharacter>(MonsterPool->PullOut(DinosaurBPClass, worldLocation));
+	/*AAICharacter* npc = Cast<AAICharacter>(MonsterPool->PullOut(DinosaurBPClass, worldLocation));
 	if (npc)
 	{
 		npc->Enable();
@@ -48,7 +47,7 @@ void AUnknown_GameMode::SpawnMonster(FVector worldLocation)
 		{
 			cont->Enable();
 		}
-	}
+	}*/
 }
 
 void AUnknown_GameMode::PushNPCIntoPool(AAICharacter* Npc)

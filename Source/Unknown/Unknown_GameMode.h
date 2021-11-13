@@ -31,5 +31,4 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pool")
 		UObjectPool* MonsterPool;
 private:
-	TSubclassOf<AActor> DinosaurBPClass;
 };
