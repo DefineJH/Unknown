@@ -24,6 +24,7 @@ public:
 	AController_AI(const FObjectInitializer& obj_initalizer = FObjectInitializer::Get());
 	virtual void BeginPlay() override;
 	void OnPossess(APawn* const InPawn);
+	UFUNCTION(Blueprintcallable)
 	virtual void OnAttacked();
 	virtual void Tick(float DeltaSeconds) override;
 	virtual UBlackboardComponent* get_blackboard() const;
