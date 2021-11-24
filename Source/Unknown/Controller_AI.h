@@ -33,13 +33,13 @@ public:
 	virtual void Enable();
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AI", meta = (AllowProtectedAccess = "true"))
-		UBehaviorTreeComponent* behaviorTreeComp;
+	UBehaviorTreeComponent* behaviorTreeComp;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AI", meta = (AllowProtectedAccess = "true"))
-		UBehaviorTree* bTree;
+	UBehaviorTree* bTree;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AI", meta = (AllowProtectedAccess = "true"))
-		UBlackboardComponent* bBoard;
+	UBlackboardComponent* bBoard;
 
 	UAISenseConfig_Sight* sight_config;
 
@@ -49,7 +49,7 @@ protected:
 protected:
 	//this function called when enemy has detected player
 	UFUNCTION()
-		void on_target_detected(AActor* actor, FAIStimulus const stimulus);
+	void on_target_detected(AActor* actor, FAIStimulus const stimulus);
 
 	void setup_perception_system();
 

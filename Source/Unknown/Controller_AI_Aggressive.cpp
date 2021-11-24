@@ -9,6 +9,7 @@
 void AController_AI_Aggressive::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
 	if (bBoard->GetValueAsBool(bb_keys::CanSeePlayer))
 	{
 		FVector TargetLoc = bBoard->GetValueAsVector(bb_keys::TargetLocation);
