@@ -22,15 +22,19 @@ public:
 	virtual void NativeBeginPlay() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
-	UFUNCTION(BlueprintNativeEvent)
-		void Play_Attack_Anim();
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	void Play_Attack_Anim();
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void Play_Dead_Anim();
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void Play_HitReact_Anim();
 public:
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite)
 		UAnimMontage* AttackMontage;
 	UPROPERTY(EditDefaultsOnly)
 		UAnimMontage* DieMontage;
+	UPROPERTY(EditDefaultsOnly)
+		UAnimMontage* HitReactMontage; 
 private:
 	bool bIsAttack;
 };
