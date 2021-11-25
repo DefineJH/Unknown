@@ -3,7 +3,7 @@
 
 #include "AnimNotifyState_Hit.h"
 
-UAnimNotifyState_Hit::GetNotifyName_Implementation() const
+FString UAnimNotifyState_Hit::GetNotifyName_Implementation() const
 {
 	return L"Hit";
 }

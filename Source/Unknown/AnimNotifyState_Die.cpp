@@ -33,10 +33,6 @@ void UAnimNotifyState_Die::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequ
 	AAICharacter* npc = Cast<AAICharacter>(MeshComp->GetOwner());
 	if (npc)
 	{
-		AUnknown_GameMode* mode = Cast<AUnknown_GameMode>(UGameplayStatics::GetGameMode(MeshComp->GetWorld()));
-		if (mode)
-		{
-			mode->DeleteNPCFromScene(npc);
-		}
+		npc->Destroy();
 	}
 }
