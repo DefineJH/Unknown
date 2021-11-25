@@ -24,6 +24,7 @@ public:
 	AController_AI(const FObjectInitializer& obj_initalizer = FObjectInitializer::Get());
 	virtual void BeginPlay() override;
 	void OnPossess(APawn* const InPawn);
+	UFUNCTION(Blueprintcallable)
 	virtual void OnAttacked();
 	virtual void Tick(float DeltaSeconds) override;
 	virtual UBlackboardComponent* get_blackboard() const;
@@ -33,13 +34,13 @@ public:
 	virtual void Enable();
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AI", meta = (AllowProtectedAccess = "true"))
-		UBehaviorTreeComponent* behaviorTreeComp;
+	UBehaviorTreeComponent* behaviorTreeComp;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AI", meta = (AllowProtectedAccess = "true"))
-		UBehaviorTree* bTree;
+	UBehaviorTree* bTree;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AI", meta = (AllowProtectedAccess = "true"))
-		UBlackboardComponent* bBoard;
+	UBlackboardComponent* bBoard;
 
 	UAISenseConfig_Sight* sight_config;
 
@@ -49,7 +50,7 @@ protected:
 protected:
 	//this function called when enemy has detected player
 	UFUNCTION()
-		void on_target_detected(AActor* actor, FAIStimulus const stimulus);
+	void on_target_detected(AActor* actor, FAIStimulus const stimulus);
 
 	void setup_perception_system();
 
