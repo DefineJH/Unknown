@@ -15,4 +15,11 @@ class UNKNOWN_API AAICharacter_Boss : public AAICharacter
 	GENERATED_BODY()
 public:
 	AAICharacter_Boss();
+	UFUNCTION(BlueprintCallable)
+	void SetInvincible();
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void MakeBarrier();
+public:
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsInvincible = false;
 };
