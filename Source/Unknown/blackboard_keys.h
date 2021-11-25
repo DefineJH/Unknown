@@ -11,4 +11,6 @@ namespace bb_keys
 	TCHAR const* const PatrolPathIdx = TEXT("PatrolPathIdx");
 	TCHAR const* const CanAttackPlayer = TEXT("CanAttackPlayer");
 	TCHAR const* const IsRunning = TEXT("IsRunning");
+	TCHAR const* const IsFlying = TEXT("IsFlying");
+	TCHAR const* const IsInvincible = TEXT("IsInvincible");
 }
