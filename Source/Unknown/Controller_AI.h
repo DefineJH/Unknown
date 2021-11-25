@@ -44,9 +44,8 @@ protected:
 
 	UAISenseConfig_Sight* sight_config;
 
-	bool bCanMove = true;
-
 	
+	bool bCanMove = true;
 protected:
 	//this function called when enemy has detected player
 	UFUNCTION()
