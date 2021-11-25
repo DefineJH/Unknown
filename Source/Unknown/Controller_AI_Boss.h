@@ -15,4 +15,5 @@ class UNKNOWN_API AController_AI_Boss : public AController_AI
 	GENERATED_BODY()
 public:
 	virtual void Tick(float DeltaSeconds) override;
+	void SetInvincible();
 };

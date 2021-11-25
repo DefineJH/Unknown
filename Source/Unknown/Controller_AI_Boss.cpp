@@ -17,3 +17,8 @@ void AController_AI_Boss::Tick(float DeltaTime)
 	rot.Pitch = 0.f;
 	GetPawn()->SetActorRotation(rot);
 }
+
+void AController_AI_Boss::SetInvincible()
+{
+	bBoard->SetValueAsBool(bb_keys::IsInvincible, true);
+}
