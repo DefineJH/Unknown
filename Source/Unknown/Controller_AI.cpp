@@ -3,6 +3,8 @@
 
 #include "Controller_AI.h"
 #include "blackboard_keys.h"
+#include "AICharacter.h"
+#include "AI_AnimInstance.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardComponent.h"
@@ -48,6 +50,15 @@ void AController_AI::OnPossess(APawn* const InPawn)
 void AController_AI::OnAttacked()
 {
 	bBoard->SetValueAsBool(bb_keys::CanSeePlayer, true);
+	AAICharacter* Npc = Cast<AAICharacter>(GetPawn());
+	if (Npc)
+	{
+		auto animInst = Cast<UAI_AnimInstance>(Npc->GetMesh()->GetAnimInstance());
+		if (animInst)
+		{
+			animInst->Play_HitReact_Anim();
+		}
+	}
 }
 
 void AController_AI::Tick(float DeltaSeconds)

@@ -17,10 +17,13 @@ AUnknown_GameMode::AUnknown_GameMode()
 
 void AUnknown_GameMode::DisableNPC(AAICharacter* Npc) const
 {
+	UE_LOG(LogTemp, Warning, L"Disable Called");
+
 	AController_AI* cont = Cast<AController_AI>(Npc->GetController());
 	// bt , movement , sense Disable-> Controller
 	if (cont)
 	{
+
 		Npc->SetActorEnableCollision(false);
 		Npc->SetActorTickEnabled(false);
 		cont->Disable();

@@ -46,3 +46,14 @@ void UAI_AnimInstance::Play_Dead_Anim_Implementation()
 	}
 }
 
+void UAI_AnimInstance::Play_HitReact_Anim_Implementation()
+{
+	if (HitReactMontage)
+	{
+		if (!Montage_IsPlaying(HitReactMontage))
+		{
+			Montage_Play(HitReactMontage);
+		}
+	}
+}
+
