@@ -18,7 +18,6 @@
 
 AController_AI::AController_AI(const FObjectInitializer& obj_initalizer /*= FObjectInitializer::Get()*/)
 {
-	UActorComponent
 	bBoard = obj_initalizer.CreateDefaultSubobject<UBlackboardComponent>(this, TEXT("BlackBoardComp"));
 	behaviorTreeComp = obj_initalizer.CreateDefaultSubobject<UBehaviorTreeComponent>(this, TEXT("BehaviorComp"));
 
