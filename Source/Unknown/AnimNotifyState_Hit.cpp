@@ -3,11 +3,7 @@
 
 #include "AnimNotifyState_Hit.h"
 
-<<<<<<< HEAD
-UAnimNotifyState_Hit::GetNotifyName_Implementation() const
-=======
 FString UAnimNotifyState_Hit::GetNotifyName_Implementation() const
->>>>>>> 32ab8088a5846fa0d8e800c708719fbc559c00ab
 {
 	return L"Hit";
 }
