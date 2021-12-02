@@ -3,7 +3,7 @@
 
 #include "AICharacter_Boss.h"
 #include "Controller_AI_Boss.h"
-AAICharacter_Boss::AAICharacter_Boss() :AAICharacter()
+AAICharacter_Boss::AAICharacter_Boss() : AAICharacter_Aggressive()
 {
 	AIControllerClass = AController_AI_Boss::StaticClass();
 	
@@ -17,6 +17,17 @@ void AAICharacter_Boss::SetInvincible()
 		cont->SetInvincible();
 	}
 	bIsInvincible = true;
+}
+
+void AAICharacter_Boss::EndAttack()
+{
+	OnAttackEndDelegate.Broadcast();
+}
+
+void AAICharacter_Boss::StartAttackAnimation()
+{
+
+	Super::StartAttackAnimation();
 }
 
 void AAICharacter_Boss::MakeBarrier_Implementation()
