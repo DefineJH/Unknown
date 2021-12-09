@@ -31,6 +31,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetInvincible();
+	UFUNCTION(BlueprintCallable)
+	void DisableInvincible();
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void MakeBarrier();
 

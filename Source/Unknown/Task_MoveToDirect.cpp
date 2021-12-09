@@ -5,6 +5,8 @@
 #include "blackboard_keys.h"
 #include "Controller_AI.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "BehaviorTree/Blackboard/BlackboardKeyType_Object.h"
+#include "BehaviorTree/Blackboard/BlackboardKeyType_Vector.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "AICharacter_Boss.h"
 #include "Kismet/KismetMathLibrary.h"
@@ -13,6 +15,9 @@ UTask_MoveToDirect::UTask_MoveToDirect(FObjectInitializer const& obj_Init)
 {
 	bNotifyTick = true;
 	NodeName = L"MoveToDirect";
+
+	BlackboardKey.AddObjectFilter(this, GET_MEMBER_NAME_CHECKED(UTask_MoveToDirect, BlackboardKey), AActor::StaticClass());
+	BlackboardKey.AddVectorFilter(this, GET_MEMBER_NAME_CHECKED(UTask_MoveToDirect, BlackboardKey));
 }
 
 void UTask_MoveToDirect::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
@@ -21,6 +26,21 @@ void UTask_MoveToDirect::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* Node
 
 	auto cont = Cast<AController_AI>(OwnerComp.GetAIOwner());
 	auto npc = Cast<AAICharacter_Boss>(cont->GetPawn());
+	if (!bMoveToPatrol)
+	{
+		if (BlackboardKey.SelectedKeyType == UBlackboardKeyType_Object::StaticClass())
+		{
+			UObject* KeyValue = MyBlackboard->GetValue<UBlackboardKeyType_Object>(BlackboardKey.GetSelectedKeyID());
+			AActor* TargetActor = Cast<AActor>(KeyValue);
+			Dest = TargetActor->GetActorLocation();
+		}
+		else if (BlackboardKey.SelectedKeyType == UBlackboardKeyType_Vector::StaticClass())
+		{
+			const FVector TargetLocation = MyBlackboard->GetValue<UBlackboardKeyType_Vector>(BlackboardKey.GetSelectedKeyID());
+			Dest = TargetLocation;
+		}
+	}
+
 	if (npc)
 	{
 		if (UKismetMathLibrary::Vector_Distance(Dest, npc->GetActorLocation()) <= AcceptanceRadius)
@@ -44,6 +64,8 @@ void UTask_MoveToDirect::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* Node
 
 EBTNodeResult::Type UTask_MoveToDirect::ExecuteTask(UBehaviorTreeComponent& owner_comp, uint8* node_memory)
 {
+	MyBlackboard = owner_comp.GetBlackboardComponent();
+
 	auto cont = Cast<AController_AI>(owner_comp.GetAIOwner());
 	auto npc = Cast<AAICharacter_Boss>(cont->GetPawn());
 	if (cont)

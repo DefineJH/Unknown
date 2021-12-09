@@ -20,6 +20,16 @@ void AAICharacter_Boss::SetInvincible()
 	bIsInvincible = true;
 }
 
+void AAICharacter_Boss::DisableInvincible()
+{
+	AController_AI_Boss* cont = Cast<AController_AI_Boss>(GetController());
+	if (cont)
+	{
+		cont->DisableInvincible();
+	}
+	bIsInvincible = false;
+}
+
 void AAICharacter_Boss::TookOff()
 {
 	auto animInst = Cast<UAI_AnimInstance>(GetMesh()->GetAnimInstance());
