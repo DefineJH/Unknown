@@ -4,19 +4,24 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "Task_TookOff.generated.h"
+#include "Task_MoveToDirect.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UNKNOWN_API UTask_TookOff : public UBTTaskNode
+class UNKNOWN_API UTask_MoveToDirect : public UBTTaskNode
 {
 	GENERATED_BODY()
 public:
-	UTask_TookOff(FObjectInitializer const& obj_Init);
+	UTask_MoveToDirect(FObjectInitializer const& obj_Init);
 	void TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds);
 	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& owner_comp, uint8* node_memory);
+
+public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	int AcceptanceRadius = 50;
 private:
+	FVector Dest;
 	bool bReached = false;
 };
