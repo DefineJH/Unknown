@@ -12,7 +12,7 @@
 
 DECLARE_MULTICAST_DELEGATE(FOnAttackEndDelegate);
 DECLARE_MULTICAST_DELEGATE(FOnTookOffEndDelegate);
-
+DECLARE_MULTICAST_DELEGATE(FOnSkyAttackEndDelegate);
 
 UENUM(BlueprintType)
 enum class EBossState : uint8
@@ -41,20 +41,34 @@ public:
 	virtual void EndAttack() override;
 
 	virtual void StartAttackAnimation() override;
+	void StartSkyAttackAnimation();
 
+	void Play_landing();
+
+	UFUNCTION(BlueprintNativeEvent)
+	void ShotFireBall();
 public:
 	UPROPERTY(BlueprintReadWrite)
 	bool bIsInvincible = false;
 
 	FOnAttackEndDelegate OnAttackEndDelegate;
 	FOnTookOffEndDelegate OnTookOffEndDelegate;
+	FOnSkyAttackEndDelegate OnSkyAttackEndDelegate;
+
 
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite)
 	UAnimMontage* FlyStationaryMontage;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	UAnimMontage* LandingMontage;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	UAnimMontage* SkyAttackMontage;
 
 	bool bIsTookOff = false;
 	bool bWasOnGround = true;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	EBossState CurState;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AActor> FireballActor;
 };

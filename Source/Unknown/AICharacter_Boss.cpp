@@ -49,8 +49,35 @@ void AAICharacter_Boss::EndAttack()
 
 void AAICharacter_Boss::StartAttackAnimation()
 {
-
 	Super::StartAttackAnimation();
+}
+
+void AAICharacter_Boss::StartSkyAttackAnimation()
+{
+	auto animInst = Cast<UAI_AnimInstance>(GetMesh()->GetAnimInstance());
+	if (animInst)
+	{
+		if (SkyAttackMontage)
+		{
+			animInst->Montage_Play(SkyAttackMontage);
+		}
+	}
+}
+
+void AAICharacter_Boss::Play_landing()
+{
+	auto animInst = Cast<UAI_AnimInstance>(GetMesh()->GetAnimInstance());
+	if (animInst)
+	{
+		if (LandingMontage)
+		{
+			animInst->Montage_Play(LandingMontage);
+		}
+	}
+}
+
+void AAICharacter_Boss::ShotFireBall_Implementation()
+{
 }
 
 void AAICharacter_Boss::Tick(float DeltaTime)
@@ -61,7 +88,7 @@ void AAICharacter_Boss::Tick(float DeltaTime)
 	{
 		FVector NewLoc = GetActorLocation() + FVector(0, 0, 6);
 		SetActorLocation(NewLoc);
-		if (GetActorLocation().Z > 3050 && GetMesh()->GetAnimInstance()->Montage_IsPlaying(FlyStationaryMontage))
+		if (GetActorLocation().Z > 950.f && GetMesh()->GetAnimInstance()->Montage_IsPlaying(FlyStationaryMontage))
 		{
 			CurState = EBossState::E_Flying;
 			GetMesh()->GetAnimInstance()->Montage_Stop(1);

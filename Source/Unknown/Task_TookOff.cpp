@@ -7,6 +7,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "AICharacter_Boss.h"
+#include "Kismet/GameplayStatics.h"
+#include "Unknown_GameMode.h"
 UTask_TookOff::UTask_TookOff(FObjectInitializer const& obj_Init)
 {
 	bNotifyTick = true;
@@ -23,6 +25,14 @@ void UTask_TookOff::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemor
 		{
 			cont->get_blackboard()->SetValueAsBool(bb_keys::IsFlying, true);
 		}
+
+		//발리스타 활성화
+		AUnknown_GameMode* gMode = Cast<AUnknown_GameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+		if (gMode)
+		{
+
+		}
+
 		FinishLatentTask(OwnerComp,EBTNodeResult::Succeeded);
 	}
 }

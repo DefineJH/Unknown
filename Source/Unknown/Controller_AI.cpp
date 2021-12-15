@@ -29,12 +29,9 @@ void AController_AI::BeginPlay()
 	Super::BeginPlay();
 	if (bTree)
 	{
-		UE_LOG(LogTemp, Warning, L"BTree created");
 		RunBehaviorTree(bTree);
 		behaviorTreeComp->StartTree(*bTree);
 	}
-	else
-		UE_LOG(LogTemp, Warning, L"BTree not created");
 
 }
 
@@ -93,7 +90,6 @@ void AController_AI::SetCanMove(bool CanMove)
 
 void AController_AI::Disable()
 {
-	UE_LOG(LogTemp, Warning, L"Disable Called");
 	BrainComponent->StopLogic("Disable");
 	auto btComp = Cast<UBehaviorTreeComponent>(BrainComponent);
 	if (btComp)
