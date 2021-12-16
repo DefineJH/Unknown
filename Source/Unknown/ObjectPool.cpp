@@ -57,7 +57,6 @@ UObject* UObjectPool::PullOut(TSubclassOf<UObject> ExtractClass, FVector Locatio
 		{
 			if (obj->GetClass() == ExtractClass)
 			{
-				UE_LOG(LogTemp, Warning, L"Previous Object %s was pool out", *(obj->GetName()));
 				OBJ_Pool.Remove(obj);
 				PoolCount--;
 				return obj;
@@ -69,7 +68,6 @@ UObject* UObjectPool::PullOut(TSubclassOf<UObject> ExtractClass, FVector Locatio
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, L"Isnt child");
 		return nullptr;
 	}
 

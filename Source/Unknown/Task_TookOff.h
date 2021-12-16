@@ -15,5 +15,8 @@ class UNKNOWN_API UTask_TookOff : public UBTTaskNode
 	GENERATED_BODY()
 public:
 	UTask_TookOff(FObjectInitializer const& obj_Init);
+	void TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds);
 	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& owner_comp, uint8* node_memory);
+private:
+	bool bReached = false;
 };

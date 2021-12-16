@@ -21,3 +21,9 @@ EBTNodeResult::Type UTask_MakeBarrier::ExecuteTask(UBehaviorTreeComponent& owner
 	}
 	return EBTNodeResult::Succeeded;
 }
+
+void UTask_MakeBarrier::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
+{
+	Super::TickTask(OwnerComp, NodeMemory, DeltaSeconds);
+
+}

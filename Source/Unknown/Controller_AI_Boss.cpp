@@ -22,3 +22,8 @@ void AController_AI_Boss::SetInvincible()
 {
 	bBoard->SetValueAsBool(bb_keys::IsInvincible, true);
 }
+
+void AController_AI_Boss::DisableInvincible()
+{
+	bBoard->SetValueAsBool(bb_keys::IsInvincible, false);
+}

@@ -10,7 +10,7 @@ void AController_AI_Aggressive::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (bBoard->GetValueAsBool(bb_keys::CanSeePlayer))
+	if (bBoard->GetValueAsBool(bb_keys::CanSeePlayer) && bCanRotate)
 	{
 		FVector TargetLoc = bBoard->GetValueAsVector(bb_keys::TargetLocation);
 		FVector CurLoc = GetPawn()->GetActorLocation();

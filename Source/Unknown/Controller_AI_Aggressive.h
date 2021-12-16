@@ -15,4 +15,6 @@ class UNKNOWN_API AController_AI_Aggressive : public AController_AI
 	GENERATED_BODY()
 public:
 	virtual void Tick(float DeltaSeconds) override;
+public:
+	bool bCanRotate = true;
 };
