@@ -45,7 +45,7 @@ public:
 
 	void Play_landing();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION(BlueprintImplementableEvent)
 	void ShotFireBall();
 public:
 	UPROPERTY(BlueprintReadWrite)

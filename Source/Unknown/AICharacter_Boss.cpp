@@ -76,9 +76,6 @@ void AAICharacter_Boss::Play_landing()
 	}
 }
 
-void AAICharacter_Boss::ShotFireBall_Implementation()
-{
-}
 
 void AAICharacter_Boss::Tick(float DeltaTime)
 {
