@@ -16,4 +16,5 @@ class UNKNOWN_API AController_AI_Boss : public AController_AI
 public:
 	virtual void Tick(float DeltaSeconds) override;
 	void SetInvincible();
+	void DisableInvincible();
 };

@@ -17,8 +17,6 @@ class UNKNOWN_API AAICharacter_Aggressive : public AAICharacter
 public:
 	AAICharacter_Aggressive();
 
-	UFUNCTION(BlueprintImplementableEvent)
-		void BeginAttack();
-	UFUNCTION(BlueprintImplementableEvent)
-		void EndAttack();
+	virtual void BeginAttack();
+	virtual void EndAttack();
 };

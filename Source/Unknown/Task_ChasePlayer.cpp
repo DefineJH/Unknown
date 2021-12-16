@@ -17,6 +17,8 @@ EBTNodeResult::Type UTask_ChasePlayer::ExecuteTask(UBehaviorTreeComponent& owner
 	AController_AI* const cont = Cast<AController_AI>(owner_comp.GetAIOwner());
 	const FVector player_loc = cont->get_blackboard()->GetValueAsVector(bb_keys::TargetLocation);
 
+	UE_LOG(LogTemp, Warning, L"Called Chase Player");
+
 	FAIMoveRequest mq;
 	mq.SetGoalLocation(player_loc);
 	mq.SetAcceptanceRadius(StopRange);

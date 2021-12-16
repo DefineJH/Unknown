@@ -14,4 +14,5 @@ class UNKNOWN_API AAICharacter_Boss_BP : public AAICharacter_Boss
 {
 	GENERATED_BODY()
 	
+	
 };
