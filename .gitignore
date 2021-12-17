@@ -77,3 +77,4 @@ DerivedDataCache/*
 # Background Assets
 Content/ProceduralNaturePack/*
 Content/FoliagePackV1/*
+Content/AI/HealthComp.uasset
