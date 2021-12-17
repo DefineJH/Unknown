@@ -52,7 +52,7 @@ void UTask_MoveToDirect::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* Node
 			FVector MoveDirect = (Dest - (npc->GetActorLocation()));
 			MoveDirect.Normalize();
 			FVector CurLoc = npc->GetActorLocation();
-			npc->SetActorLocation(CurLoc + (MoveDirect * 5.f));
+			npc->SetActorLocation(CurLoc + (MoveDirect * 20.f));
 			FRotator TargetRot = UKismetMathLibrary::FindLookAtRotation(CurLoc, Dest);
 			FRotator rot = UKismetMathLibrary::RInterpTo(npc->GetActorRotation(), TargetRot, DeltaSeconds, 100.f);
 			rot.Pitch = 0.f;

@@ -85,7 +85,7 @@ void AAICharacter_Boss::Tick(float DeltaTime)
 	{
 		FVector NewLoc = GetActorLocation() + FVector(0, 0, 6);
 		SetActorLocation(NewLoc);
-		if (GetActorLocation().Z > 950.f && GetMesh()->GetAnimInstance()->Montage_IsPlaying(FlyStationaryMontage))
+		if (GetActorLocation().Z > 10000.f && GetMesh()->GetAnimInstance()->Montage_IsPlaying(FlyStationaryMontage))
 		{
 			CurState = EBossState::E_Flying;
 			GetMesh()->GetAnimInstance()->Montage_Stop(1);
