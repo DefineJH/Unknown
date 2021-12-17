@@ -27,7 +27,7 @@ EBTNodeResult::Type UTask_Landing::ExecuteTask(UBehaviorTreeComponent& owner_com
     npc->Play_landing();
     cont->SetCanMove(true);
     npc->CurState = EBossState::E_Ground;
-    npc->SetActorLocation(FVector(npc->GetActorLocation().X, npc->GetActorLocation().Y, 100 ));
+    npc->SetActorLocation(FVector(npc->GetActorLocation().X, npc->GetActorLocation().Y, 8625 ));
 
     cont->get_blackboard()->SetValueAsBool(bb_keys::IsFlying, false);
     return EBTNodeResult::Succeeded;
