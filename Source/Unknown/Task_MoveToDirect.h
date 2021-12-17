@@ -22,6 +22,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int AcceptanceRadius = 50;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FVector Destination;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bMoveToPatrol = true;
 private:
 	FVector Dest;
