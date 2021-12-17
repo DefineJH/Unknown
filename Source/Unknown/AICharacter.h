@@ -24,7 +24,8 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	APatrolPath* getPatrolPath();
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI")
+		APatrolPath* patrolPath;
 
 
 
@@ -43,8 +44,7 @@ protected:
 
 	//virtual void SetupBoxColliders();
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI", meta = (AllowProtectedAccess = "true"))
-		APatrolPath* patrolPath;
+
 
 
 	float AttackMeleeDamage = 1.5f;
