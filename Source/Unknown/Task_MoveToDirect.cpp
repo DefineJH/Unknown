@@ -28,17 +28,7 @@ void UTask_MoveToDirect::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* Node
 	auto npc = Cast<AAICharacter_Boss>(cont->GetPawn());
 	if (!bMoveToPatrol)
 	{
-		if (BlackboardKey.SelectedKeyType == UBlackboardKeyType_Object::StaticClass())
-		{
-			UObject* KeyValue = MyBlackboard->GetValue<UBlackboardKeyType_Object>(BlackboardKey.GetSelectedKeyID());
-			AActor* TargetActor = Cast<AActor>(KeyValue);
-			Dest = TargetActor->GetActorLocation();
-		}
-		else if (BlackboardKey.SelectedKeyType == UBlackboardKeyType_Vector::StaticClass())
-		{
-			const FVector TargetLocation = MyBlackboard->GetValue<UBlackboardKeyType_Vector>(BlackboardKey.GetSelectedKeyID());
-			Dest = TargetLocation;
-		}
+		Dest = Destination;
 	}
 
 	if (npc)

@@ -29,7 +29,7 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 	virtual UBlackboardComponent* get_blackboard() const;
 	virtual void SetCanMove(bool CanMove);
-
+	
 	virtual void Disable();
 	virtual void Enable();
 protected:
